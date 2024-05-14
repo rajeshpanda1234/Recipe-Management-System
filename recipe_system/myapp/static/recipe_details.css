@@ -1,0 +1,294 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    background-image: url("https://www.shutterstock.com/image-photo/notepad-your-recipe-herbs-spices-260nw-370298699.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+
+
+.container {
+    max-width: 50rem;
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 7rem;
+    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(2.5rem);
+
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.section p,
+.section ul,
+.section ol {
+    line-height: 1.6;
+    text-align: justify;
+    padding: 0 1rem;
+}
+.section ul,
+.section ol{
+    padding: 0 1.5rem;
+}
+
+.container form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.container form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container form input {
+    width: 300px;
+    height: 50px;
+    padding-left: 10px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    background: none;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+}
+
+.container form input::placeholder {
+    color: #fff;
+}
+
+.container form #lastName,
+.container form #mobile {
+    margin-left: 20px;
+}
+
+.container form h4 {
+    font-weight: 300;
+    width: 600px;
+    margin-top: 20px;
+}
+
+.container form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #fff;
+    /* Background color */
+    background-color: rgba(255,
+            255,
+            255,
+            0.5);
+    /* Transparent white background with 50% opacity */
+    backdrop-filter: blur(8px);
+    /* Apply blur effect */
+    color: #000;
+}
+::placeholder {
+    color: #555;
+    /* Placeholder text color */
+}
+
+.container form h4 {
+    font-size: 20px;
+}
+
+.button-wrapper {
+    margin-top: 18px;
+}
+
+.btn {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 12px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.btn+.btn {
+    margin-left: 10px;
+}
+
+.outline {
+    background: transparent;
+    color: rgba(0, 212, 255, 0.9);
+    border: 1px solid rgba(0, 212, 255, 0.6);
+    transition: all 0.3s ease;
+    min-width: 7rem;
+}
+
+.outline:hover {
+    transform: scale(1.125);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rate>input:checked~label {
+    color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #c59b08;
+}
+
+.container2 {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 8px;
+
+
+}
+
+.container2 b {
+    font-size: 1.1rem;
+}
+
+.container2 h2 {
+    text-align: center;
+}
+
+.feedback-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feedback-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.feedback-item:last-child {
+    border-bottom: none;
+}
+
+.feedback-rating {
+    color: #ffe100;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px  #900000 , -1px 1px #900000;
+}
+
+.small_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.details span {
+    margin: 2px;
+
+}
+
+.details {
+    height: 20rem;
+    padding: 0 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.details img {
+    width: 15rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.255);
+    height: 15rem;
+
+}
+.submit-star{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.crud{
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0px;
+}
+
+.created_by{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    flex-direction: column;
+    align-items: center;
+}

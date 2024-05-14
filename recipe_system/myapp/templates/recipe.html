@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %} 
+{% load static %} 
+
+<link rel="stylesheet" href="{% static 'recipe.css' %}" />
+    <div class="con">
+
+      {% for item in recipe_items %}
+
+
+      <div class="container ">
+        <div class="wrapper">
+          <div class="banner-image"><img src="../../media/{{item.image}}" alt="{{item.image}}"></div>
+          <h2> {{item.title}}</h2>
+          <em>  by <b> {% if item.created_by == loggedin_user%}You {% else %} {{item.created_by.first_name}} {% endif %}</b></em>
+          <p>{{ item.description | slice:":50" }}{% if item.description|length > 50 %}...{% endif %}</p>
+
+        <div class="button-wrapper">
+          <a href="{{category_id}}/{{item.id}}"> <button class="btn outline">VIEW DETAILS</button> </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}

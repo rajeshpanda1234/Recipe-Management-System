@@ -1,0 +1,63 @@
+{% extends "base.html" %} 
+{% block title %}Recipe Management System{% endblock %}
+{% block content %} {% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'index.css' %}" />
+  <!-- <link rel="stylesheet" href="../static/index.css"> -->
+</head>
+
+<div class="con">
+  <!-- partial:index.partial.html -->
+
+  <div class="container">
+    <div class="wrapper">
+      <div class="banner-image">
+        <img src="https://cdn2.foodviva.com/static-content/food-images/curry-recipes/veg-kolhapuri/veg-kolhapuri.jpg" alt="Veg-Recipe" />
+      </div>
+      <h2>Veg Recipe</h2>
+      <p>Delightful dishes bursting with flavor, sans the meat!</p>
+    </div>
+    <div class="button-wrapper">
+      <a href="recipe/Veg" name="veg"
+        ><button class="btn outline">VIEW RECIPE</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="wrapper">
+
+      <div class="banner-image">
+        <img src="https://assets.zeezest.com/images/PROD_2_1662611636261.jpg" alt="Non-Veg Recipe" />
+      </div>
+      <h2>Non-Veg Recipe</h2>
+      <p>Savory delights embracing the essence of meaty goodness!</p>
+    </div>
+    <div class="button-wrapper">
+      <a href="recipe/Non-Veg" name="non-veg"
+        ><button class="btn outline">VIEW RECIPE</button>
+      </a>
+      <!-- <button class="btn fill">BUY NOW</button> -->
+    </div>
+  </div>
+  <div class="container">
+    <div class="wrapper">
+
+      <div class="banner-image">
+        <img src="https://www.budgetbytes.com/wp-content/uploads/2013/07/How-to-Calculate-Recipe-Costs-H.jpg" alt="{{item.image}}" />
+      </div>
+      <h2>Add Recipe</h2>
+      <p>Craft culinary masterpieces with ease and flair!</p>
+    </div>
+    <div class="button-wrapper">
+      <a href="add-recipe" name="add-recipe"
+        ><button class="btn outline">ADD RECIPE</button>
+      </a>
+      <!-- <button class="btn fill">BUY NOW</button> -->
+    </div>
+  </div>
+</div>
+
+<!-- Add more recipe cards as needed -->
+
+{% endblock %}

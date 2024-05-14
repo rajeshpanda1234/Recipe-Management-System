@@ -1,0 +1,97 @@
+{% extends 'base.html' %} {% block content%}
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'recipe_form.css' %}" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+</head>
+<div class="container">
+  <h1>{% if add %}Add{% else %}Edit{% endif %} Recipe</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="wrapper">
+      <div class="banner-image">
+        <label for="input-file" id="drop-area">
+          <input type="file" accept="image/*" id="input-file" name = "image" {% if add %}required {% endif %}/>
+
+          <div id="img-view">
+            <!-- <img src="" alt=""> -->
+            <div class="img-container">
+              <span class="material-symbols-outlined" id="upload">
+                cloud_upload
+              </span>
+              <p>
+                Drag and drop or click here<br />
+                to upload image
+              </p>
+              <span id="desktop">Upload any image from desktop</span>
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="input-fields">
+        <div class="title-category">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            required
+            minlength="3"
+            placeholder="Title"
+            value= "{{recipe_obj.title}}"
+          />
+          <select name="category" id="category" required>
+            <option value="" disabled {% if not recipe_obj %}selected{% endif %}>Select category</option>
+            <option value="Veg" {% if recipe_obj.category.name == "Veg" %} selected {% endif %}>Veg</option>
+            <option value="Non-Veg" {% if recipe_obj.category.name == "Non-Veg" %} selected {% endif %}>Non-Veg</option>
+          </select>
+          
+        </div>
+        <textarea
+          name="description"
+          id="description"
+          rows="5"
+          minlength="5"
+          placeholder="Description"
+          required
+          
+        >{{recipe_obj.description}}</textarea>
+        <textarea
+          name="instructions"
+          id="instructions"
+          rows="5"
+          minlength="5"
+          placeholder="Instructions"
+          required >{{recipe_obj.instructions}}</textarea>
+        <textarea
+          name="ingredients"
+          id="ingredients"
+          rows="5"
+          minlength="5"
+          placeholder="Ingredients"
+          required
+         
+        >{{recipe_obj.ingredients}}</textarea>
+
+        <div class="button-wrapper">
+            <button class="btn outline" type="submit">{% if add %}+ADD{% else %}UPDATE{% endif %}  RECIPE</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<script src="/static/recipe_form.js"> </script>
+
+
+{% if recipe_obj %}
+<script>
+  console.log("{{recipe_obj.image}}");
+  // Assuming uploadImage function accepts the image link as an argument
+  uploadImage('/media/{{recipe_obj.image}}');
+
+</script>
+  {% endif %}
+
+{% endblock%}

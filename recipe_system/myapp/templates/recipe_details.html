@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}Recipe Details{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'recipe_details.css' %}" />
+<div class="container">
+    <h1>{{recipe_item.title}}</h1>
+    <div class="small_container">
+        <div class="section">
+            <h2>Description</h2>
+            <p>{{recipe_item.description|linebreaks}}</p>
+        </div>
+        <div class="details">
+            <img src="../../media/{{recipe_item.image}}" alt="" />
+            <span class="created_by"> <em>created by</em><b>{% if accessable_user %} You {% else %} {{recipe_item.created_by.first_name}} {% endif %}</b> </span>
+            <span><em>{{recipe_item.created_at}}</em> </span>
+        </div>
+    </div>
+    <div class="section">
+        <h2>Ingredients</h2>
+        <ul>
+            {% for ingredient in recipe_ingredients %}
+            <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="section">
+        <h2>Instructions</h2>
+        <ol>
+            {% for instruction in recipe_instructions %}
+            <li>{{ instruction }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Preparation Time</h2>
+        <p>30 minutes</p>
+    </div>
+    <div class="crud">
+        <!-- <a href="/recipe/{{category_id}}/{{recipe_item.id}}/update-recipe"> -->
+            <div class="button-wrapper">
+                <button class="btn outline upd" type="button" id="button">EDIT</button>
+            </div>
+        <!-- </a> -->
+        <div class="button-wrapper">
+            <button class="btn outline del" type="button" id="button">DELETE</button>
+        </div>
+    </div>
+
+    <hr />
+    <div class="container2">
+        <h2>Customer Feedbacks</h2>
+        {% if all_feedback %}
+        <ul class="feedback-list">
+            {% for feedback in all_feedback %}
+            <li class="feedback-item">
+                <b>{{ feedback.user.first_name }}&nbsp;&nbsp;&nbsp;&nbsp;{{feedback.user.last_name}}</b>
+                {% if not feedback.rating %}
+                <span class="feedback-rating"> Rating - No rating</span>
+                {%else%}
+                <span class="feedback-rating"> Rating - {{ feedback.rating }}</span>
+                {% endif %}
+                <br />
+                <br />
+                <span>{{ feedback.message }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No reviews available.</p>
+        {% endif %}
+    </div>
+    <div style="width: 100%; text-align: center;">
+        {% include "alert.html" %}
+    </div>
+    <!-- Add more sections for additional details such as nutrition facts, serving size, etc. -->
+    <hr />
+    <form action="/recipe/{{category_id}}/{{recipe_item.id}}" method="POST">
+        {% csrf_token %}
+
+
+        <h2>Leave a comment</h2>
+
+
+
+        <textarea required name="feedback_message" placeholder="Type Your Message Here"></textarea>
+
+        <div class="submit-star">
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" required value="5" />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" required value="4" />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" required value="3" />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" required value="2" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" required value="1" />
+                <label for="star1" title="text">1 star</label>
+            </div>
+            <div class="button-wrapper">
+                <button class="btn outline" type="submit" id="button">SUBMIT</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+</div>
+
+<script>
+    // Prevent default action when clicking on radio inputs and labels
+    document.querySelectorAll('.rate input[type="radio"], .rate label').forEach(element => {
+        element.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation(); // Stop event propagation to prevent other event handlers from firing
+            if (event.target.tagName === 'LABEL') {
+                const radioInput = document.getElementById(event.target.getAttribute('for'));
+                if (radioInput) {
+                    radioInput.checked = true;
+                }
+            }
+        });
+    });
+
+    document.querySelector('.del').addEventListener('click', (e) => {
+    {% if accessable_user %}
+        if (window.confirm('Are You Sure To Delete ?')) {
+            console.log("Deleted !");
+            window.location.href = '/recipe/{{category_id}}/{{recipe_item.id}}/delete-recipe';
+        } else {
+            console.log("NOT Delete");
+        }
+    {% else %}
+        alert("You are not permitted to Delete {{recipe_item.created_by.first_name}}'s item...");
+    {% endif %}
+});
+
+
+document.querySelector('.upd').addEventListener('click', (e) => {
+    
+    {% if accessable_user %}
+
+        window.location.href = '/recipe/{{category_id}}/{{recipe_item.id}}/update-recipe';
+    
+    {% else %}
+        alert("You are not permitted to Updata {{recipe_item.created_by.first_name}}'s item...");
+    
+    {% endif %}
+});
+
+</script>
+{% endblock %}
