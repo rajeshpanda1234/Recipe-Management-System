@@ -2,7 +2,22 @@
 {% load static %} 
 
 <link rel="stylesheet" href="{% static 'recipe.css' %}" />
-    <div class="con">
+
+    <div class="con" {% if not recipe_items%} style="justify-content: center;" {% endif %}>
+
+      {% if not recipe_items %}
+        <div class="container">
+          <div class="wrapper">
+            <h2>No Items Found</h2>
+            <p>Click bellow to add item</p>
+          </div>
+          <div class="button-wrapper">
+            <a href="/add-recipe" name="veg"
+              ><button class="btn outline">+ ADD RECIPE</button>
+            </a>
+          </div>
+        </div>
+      {% endif %}
 
       {% for item in recipe_items %}
 

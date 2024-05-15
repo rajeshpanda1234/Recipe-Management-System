@@ -28,7 +28,8 @@ def login(request):
         form_type = request.POST.get('form_type')
 
         if form_type == "form1":
-            name = request.POST.get('name')
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
             email = request.POST.get('email')
             password = request.POST.get('password')
             confirm_password = request.POST.get('confirm_password')
@@ -43,16 +44,12 @@ def login(request):
                 return HttpResponseRedirect('login')
             except User.DoesNotExist:
                 # Create the user if it doesn't exist
-                user_obj = User.objects.create(username=email, first_name=name, email=email)
+                user_obj = User.objects.create(username=email, first_name=first_name, last_name=last_name, email=email)
                 user_obj.set_password(password)
                 user_obj.save()
 
-                # Create UserProfile object for the user
-                profile_obj = UserProfile.objects.create(user=user_obj , bio = "this is me")
-                # Optionally, you can also set additional fields of UserProfile here
-
                 messages.success(request, 'User created successfully!')
-                return redirect('login')  # Redirect to login page after successful user creation
+                return redirect('login')  # Redirect to login page after successful user creation  # Redirect to login page after successful user creation
         elif form_type == "form2":
             email = request.POST.get('email')
             password = request.POST.get('password')

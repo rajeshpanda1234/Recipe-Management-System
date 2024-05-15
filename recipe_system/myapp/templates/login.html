@@ -15,10 +15,11 @@
                 {% include "alert.html" %}
                 <a href="/"><h2>Create Account</h2></a>
     
-                <input type="text" placeholder="Name" name="name" required>
-                <input type="email" placeholder="Email" name="email" required>
-                <input type="password" placeholder="Enter Password" name="password" max_length = 6 required>
-                <input type="password" placeholder="Confirm Password" name="confirm_password" required>
+                <input type="text" placeholder="First Name" name="first_name" required >
+                <input type="text" placeholder="Last Name" name="last_name" required>
+                <input type="text" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Enter Password" name="password" minlength="4" required>
+                <input type="password" placeholder="Confirm Password" name="confirm_password" minlength="4" required>
                 <button type='submit' name="form_type" value="form1" id = "redg">Sign Up</button>
             </form>
         </div>
@@ -28,7 +29,7 @@
                 {% include "alert.html" %}
                 <a href="/"><h1>Sign In</h1></a>
             
-                <input type="email" placeholder="Email" name="email" required>
+                <input type="text" placeholder="Email or Username (For Admin)" name="email" required>
                 <input type="password" placeholder="Password" name="password" required>
                 
                 <button type="submit" name="form_type" value="form2" >Sign In</button>
