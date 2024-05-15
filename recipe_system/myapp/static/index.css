@@ -11,7 +11,9 @@ img {
   
 body{
     overflow: hidden;
-    background-image: url("https://cdn.create.vista.com/api/media/small/201608300/stock-photo-mozzarella-cheese-tomatoes-condiments-dark-blue-table");
+    background-image: url("../media/recipe_images/home_body.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
   .con {

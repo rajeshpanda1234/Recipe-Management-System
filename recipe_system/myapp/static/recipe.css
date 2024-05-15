@@ -6,7 +6,7 @@
 
 
 main {
-  background-image: url("https://www.uaex.uada.edu/life-skills-wellness/food-nutrition/eating-well/EFNEP/images/Recipes-Banner.jpg");
+  background-image: url("../media/recipe_images/recipe_banner.jpg") ;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
